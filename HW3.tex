@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 3}\medskip
+\end{Large}
+{\bf Due:} Tuesday, April 13, at 11:59 PM CST (UTC -6) on Gradescope.
+
+{\bf Special directions:} n/a
+
+{\bf Name:} Garry Gao
+
+{\bf Citation:} Q1 and Q5 done with the help from Professor Price
+
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item A chocolate bar consists of \(n\) squares arranged in a rectangular pattern. You split the bar into small squares, always breaking along the lines between the squares. Use induction to prove that no matter how you break the bar, it takes \(n-1\) breaks to split it into the \(n\) smaller squares.
+
+	Comment: Chocolate bars are not necessarily one long line of rectangles. When \(n= 6\) the bar could consist of 6 small squares in a row, or it could consist of two rows of 3 squares each.
+
+	\begin{proof} If chocolate bar only has one square, then we don't need to break it. In other words, when $n=1$, it takes $n-1=0$ break to split the bar. The statement is correct.
+
+	Then we discuss the situation that $n>1$. Assume when $1 < m < n$, where m is an integer, it takes $m-1$ breaks to break the chocolate bar with $m$ squares. However we break the chocolate bar, it will be seperated into two pieces. Assume one has $a$ squares and the other one has $b$ squares. Since $a$ and $b$ are both positive and smaller than $n$, they follow the assumption. For the piece with $a$ squares, it takes $a-1$ breaks to break it. For the piece with $b$ squares, it takes $b-1$ breaks to break it. The total step to break the whole chcolate bar would be the sum of steps to break each of two small pieces plus the one step it takes to break it into two pieces. In this case since we have $n=a+b$, the number of breaks is $(a-1)+(b-1)+1 = a+b-1 = n-1$. This result matches the statement.
+
+	Since we have proven the base case and the other case, we proved it takes $n-1$ breaks to split a chocolate bar with $n$ squares into the $n$ pieces according to the strong induction.
+	\end{proof}
+
+	%q2
+	\item Prove using induction that every integer \( n \ge 12\) can be written in the form \(n = 3a+7b\) for some nonnegative integers \(a\) and \(b\).
+
+	\begin{proof} Here we use strong induction.
+		\begin{itemize}
+			\item We first prove the base cases that $n=12, 13,$ or $14$. When $a=4$ and $b=0$, $n=3a+7b=3 \times 4 + 7 \times 0 = 12$. When $a=2$ and $b=1$, $n=3a+7b=3 \times 2 + 7 \times 1 = 13$. When $a=0$ and $b=2$, $n=3a+7b=3 \times 0 + 7 \times 2 = 14$. All $a$s and $b$s are nonnegative integers. The statement is correct for base cases.
+			\item Then we discuss the case where $n>14$. Assume we have an integer $m>12$, and which could be written in the form $m=3a_0+7b_0$. Since $m+3 = (m+2)+1 = 3a_0+7b_0+3 = 3\cdot (a_0+1) + 7 \cdot b_0$, where $a_0$ and $b_0$ are nonnegative. This means $m+3$ could also be written in the form of $m+3 = (m+2)+1 = 3a+7b$, where $m+2>14, a\ge 0, b\ge 0$.
+		\end{itemize}
+				By proving the base case and the other case, we have proven that every integer $n \ge 12$ could be written in the form $n = 3a + 7b$ for some nonnegative integers a and b, according to the strong induction.
+	\end{proof}
+
+	%q3
+	\item (\S 1.4 \#2). If \(p\) is a prime greater than \(4\), prove that \(p\) has the form \(4k+r\) where \(r = 1\) or \(r = 3\).
+
+	\begin{proof} Let $p$ be any prime number larger than 4. Use the division algorithm with $b=4$, then there are four possible cases: $p = 4k, p = 4k+1, p = 4k+2, p=4k+3$.
+		\begin{itemize}
+			\item First case is $p=4k$. Since $p > 4$, and $4|4k$, $p$ has divisor 4 other than 1 and itself. Thus in this case $p$ is not prime by definition.
+			\item The third case is $p=4k+2$. Since $2|4$, 2 divides $4k$. Also since $2|2$, we have $2|p$ from HW1. Since $p$ has divisor 2 other than itself and 1, by definition it is not prime.
+		\end{itemize}
+		By eliminating the last two cases, we are left with two cases that satisfy the assumpiton. We come to the conclusion that if \(p\) is a prime greater than \(4\), prove that \(p\) has the form \(4k+1\) or \(4k+3\).
+	\end{proof}
+
+	%q4
+	\item (\S 1.4 \#3). \textbf{(This question must be done on your own.)} If \(a = 4q_{1}+3 \) and \(b = 4q_{2}+3\), prove that \(ab = 4q_{3}+1\), where \(q_{1},q_{2},\) and \(q_{3}\) are integers.
+
+	\begin{proof}
+		By definition, $ab = (4q_1+3)\cdot (4q_2+3) = 16q_1q_2+12q_1+12q_2+9 = 4(4q_1q_2 + 3(q_1+q_2) + 2) + 1.$ Since $q_1$ and $q_2$ are both integers, $4q_1q_2 + 3(q_1+q_2) + 2$ would be an integer. Let this integer be $q_3$, then $ab$ could be written in the form of $4q_3+1$.
+	\end{proof}
+
+	%q5
+	\item (\S 1.4 \#12). If a product of primes is of the form \(4q+3\), prove that at least one of the primes must have this form.
+
+	\begin{proof}  We prove this by using contradiction.
+	\begin{itemize}
+		\item Having $3= 4\times 0 + 3$, 4 is not a prime, and the proof from Q3, we have that if $p$ is a prime greater than or equal to 3, it has the form \(4k+r\) where \(r = 1\) or \(r = 3\).
+		\item If 2 is one of the primes, then 2 is a divisor of the product. By definition the product would be an even number, which could not be written in the form $4q+3$ where q is an integer. Thus by contradiction, 2 is not one of the primes.
+		\item Therefore the product of the primes only contains the prime that has the form \(4k+r\) where \(r = 1\) or \(r = 3\). Assume there are no prime number in the form of $4q+3$ while the product of prime is in this form. Then the product could be written in the form of $(4k_1+1)\cdot (4k_2+1) \cdot \ldots \cdot (4k_n+1)$, where all $k$s are integers.
+		\item First is the base case where $n=2$, the product of primes would be $(4\times k_1 +1)\cdot (4\times k_2 +1) = 16k_1k_2 + 4(k_1+k_2)+1 = 4(4k_1k_2+ k_1 + k_2) + 1$, which could not be written in the form or $4q+3$ according to the properties of "Divides". Then we consider $n>2$. If integer $n$ let $(4k_1+1)\cdot (4k_2+1) \cdot \ldots \cdot (4k_n+1) = 4q + 1$, then for $n+1$, $(4k_1+1)\cdot (4k_2+1) \cdot \ldots \cdot (4k_{n+1}+1) = (4q + 1)\cdot (4k_{n+1}+1) = 4(4qk_{n+1}+ q + k_{n+1}) + 1$, which could not be written in the form of $4q+3$. Here by using mathematical induction we proved that the prodcut of primes with the form of $4q+1$ could not be written in the form of $4q+3$.
+	\end{itemize}
+		Thus by contradiction, if the product of prime is in the form $4q+3$, there has to be at least one of the primes have this form.
+	\end{proof}
+
+\end{enumerate}
+
+\end{document}
