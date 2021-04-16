@@ -1,6 +1,6 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
@@ -27,25 +27,83 @@
 
 {\bf Special directions:} n/a
 
+{\bf Name:} Garry Gao
+
+{\bf Citation:} Q1 and Q7 done with hints from tutor Daniel.
+
 
 \hrulefill
 
 \begin{enumerate}
+	%q1
 	\item (\S 1.2 \#7). Consider the table on page 8 of the book.  For what integers is \(\tau\!\left(n\right)\) odd?  What common property do those integers share? (Are you able to prove your answer? Later in the term, we will develop mathematical machinery to prove this more easily than you can now, but see if you can prove it with your current tools!)
-	
+
+	\begin{itemize}
+  \item For the table on page 8  of the book, numbers 1, 4, 9, 16, 25, 36, and 49 have odd \(\tau\!\left(n\right)\) values. These numbers are all square numbers.
+	\item \begin{proof} For every positive integer $n$, it will have a set of positive divisors $T$ with $k$ elements. Assume $j$ is an integer that $1\leq j \leq k$. The product of $j^{th}$ element and $(k-j+1)^{th}$ element in $T$ is equal to $n$. If $\tau(n)$ is odd, there exsists $j$ so that $j=k-j+1$. Thus $T(j) \times T(k-j+1) = T(j) \times T(j) = n$, $n$ is a square number. \end{proof}
+	\end{itemize}
+
+
+	%q2
 	\item (\S 1.2 \#13). Write a definition for prime numbers which uses the function \(\sigma\!\left(n\right)\).  In particular, your definition should apply to all prime numbers and no composite numbers. (Are you able to prove your answer?)
-	
+
+	\begin{itemize}
+		\item Definition: A positive integer n is called prime if \(\sigma\!\left(n\right) = n + 1\).
+		\item \begin{proof} Every positive integer larger than 1 has at least two divisors, 1 and itself. Thus for a positive integer $n$, the function \(\sigma\), which defined by \(\sigma\!\left(n\right)\) equals the sum of the positive divisors of n, would and only would equal to \(n+1\) when it has two divisors, n and 1. By the definition of a prime number, a prime number has only two positive divisors, therefore n here is a prime number. To conclude, a positive integer n is prime if \(\sigma\!\left(n\right) = n + 1\). \end{proof}
+	\end{itemize}
+
+
+	%q3
 	\item Explain, in your own words, why mathematical induction makes sense. (You do not have to prove anything for this problem.)
-	
-	\item (\S 1.3 \#4). Prove that \(3\) divides \(2^{2n}-1\) for every positive integer \(n\). 
-	
+
+	Mathematicla induction makes sense because the it is seperated into two steps. The first step is to prove when $n = 1$, $P(n)$ is true, where 1 is the smallest positive integer. The step proving if \(k + 1\) belongs to $T$ whenever $k$ belongs to $T$ is connecting the numbers together. If we consider positive integers like a chain, the first step shows that the head of the chain is valid, and the second step shows that consecutive units are valid, thus the whole chain must be valid.
+
+
+	%q4
+	\item (\S 1.3 \#4). Prove that \(3\) divides \(2^{2n}-1\) for every positive integer \(n\).
+
+	\begin{proof} We use the principle of mathematical induction here.\\
+		\begin{itemize}
+			\item Assume $n$ is a positive integer. For $n=1$, $2^{2n}-1 = 2^2-1 = 3$. 3 divides 3.
+			\item For $n>1$, $2^{2(n+1)}-1 = 2^{2n+2}-1 = 2^{2n}\times 4-1 = (2^{2n}-1) \times 4 + 3$. If having the induction hypothesis 3 divides $2^{2n}-1$ and 3 divides 3, then 3 must divides $(2^{2n}-1) \times 4 + 3$ according to the properties of "Divides".
+		\end{itemize}
+		By proving the base case $n=1$ and the other case $n>1$, the Principle of Mathematical Induction concludes that for every positive integer $n$, 3 divides $2^{2n}-1$.
+	\end{proof}
+
+
+	%q5
 	\item (\S 1.3 \#7). \textbf{(This question must be done on your own.)} If \(x \ne 1 \), prove that for every positive integer \(n\),
-	
+
 	\[ \frac{1-x^{n}}{1-x} = 1 + x + \ldots + x^{n-1}. \]
-	
+
+	\begin{proof} We use the principle of mathematical induction here.\\
+		\begin{itemize}
+			\item For base case $n=1$, the left side of the equation is $\frac{1-x}{1-x}$, which equals 1. The right side of the equation becomes 1, matches the left side. The equation holds.
+			\item For $n>1$, the left side of the equation becomes \[ \frac{1-x^{n+1}}{1-x} = \frac{1-x^{n}\cdot x}{1-x} = \frac{1 - x + x -x^{n}\cdot x}{1-x} = \frac{(1 - x) + x(1 -x^{n})}{1-x} = 1 + \frac{x(1 -x^{n})}{1-x}. \] And the right side of the equation becomes $1 + x + \ldots + x^{n}.$ \\ Having the induction hypothesis, assume $ \frac{1-x^{n}}{1-x} = 1 + x + \ldots + x^{n-1} $, then \[ 1 + \frac{x(1 -x^{n})}{1-x} = 1 + (x \cdot 1+ x \cdot x + \ldots + x \cdot x^{n-1}) =  1 + x + \ldots + x^{n}.\] The equation holds.
+		\end{itemize}
+		By proving the base case $n=1$ and the other case $n>1$, the Principle of Mathematical Induction concludes that for every positive integer $n$, if $x \neq 1$, then \( \frac{1-x^{n}}{1-x} = 1 + x + \ldots + x^{n-1} . \)
+	\end{proof}
+
+
+	%q6
 	\item Prove that for every positive integer \(n\), the value \(n^{3}+ 2n\) is divisible by \(3\).
-	
+
+	\begin{proof} We use the principle of mathematical induction here.\\
+		\begin{itemize}
+			\item  For $n=1$, $n^3+2n = 1+2 =3$. 3 divides 3.
+			\item For $n>1$, $(n+1)^3 + 2(n+1) = n^3 + 3n^2 + 5n + 3 = (n^3 + 2n) + 3(n^2 + n + 1)$. If we assume the induction hypothesis that 3 divides $(n^3 + 2n)$, and since 3 divides $3(n^2 + n + 1)$, 3 must divides the sum of them according to the properties of "Divides". In other words, 3 divides $(n+1)^3 + 2(n+1)$ if 3 divides $(n^3 + 2n)$.
+		\end{itemize}
+		By proving the base case $n=1$ and the other case $n>1$, the Principle of Mathematical Induction concludes that for every positive integer $n$, 3 divides $n^3 + 2n$.
+	\end{proof}
+
+
+	%q7
 	\item (\S 1.3 \#10). Prove that for any positive integer \(k\), there exists a sequence of $k$ consecutive composite integers.  As an example, for $k=3$, the sequence ``\(14, 15, 16\)'' is a sequence of \(k=3\) composite integers.
+
+	\begin{proof}
+		Consider integers $2+(k+1)!, 3+(k+1)!, \ldots, (k+1)+(k+1)!.$ There are all together k consecutive integers. For integer $2\leq n  < k+1$, n divides $(k+1)!$. And since n divides n, we have \[ 2|2+(k+1)!, 3|3+(k+1)!, \ldots, n|n+(k+1)!, \dots, k+1|k+1+(k+1)! \] Since all these numbers have dizisors other than 1 and itself, they are composite by definition. And they are also consecutive. Thus for $k>2$, there exisits a sequence of $k$ consecutive composite integers. 
+	\end{proof}
+
 \end{enumerate}
 
 \end{document}

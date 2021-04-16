@@ -11,6 +11,7 @@
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage{wasysym}
+\usepackage{amsthm}
 
 \newcommand{\Z}{\mathbb{Z}}
 
@@ -23,7 +24,7 @@
 
 {\bf Special directions:} At least one (1) problem must be done in \LaTeX.
 
-{\bf Name:} Garry Gao
+{\bf Name:} Yang (Garry) Gao
 
 
 \hrulefill
@@ -51,6 +52,42 @@
 	\item \textbf{(This question must be done on your own.)} (Review exercise) Prove for all integers \(n \ge 1\) that \(2^{n} > n\).
 
 
+\end{enumerate}
+
+\hrulefill
+
+\begin{enumerate}
+	%q1
+	\item \begin{enumerate}
+		%q1a
+		\item \begin{proof} By definition, $M_b = \{kb: k$ is an integer \(\}\), and $M_a = \{ja: j$ is an integer \(\}\). Since $a|b$, there exists integer $n$ that $b=n\cdot a$. Thus $kb = k\cdot (n\cdot a) = k'a$, where $k'$ is an integer. We find that $kb=k'a$ is an element of $M_a$. Since every element of $M_b$ is an element of $M_a$, by definition, $M_b \subseteq M_a$. \end{proof}
+		%q1b
+		\item \begin{proof} Let the least common multiple of $a$ and $b$ be $m$. Then $m$ is the least positive elemest of $M_a \cap M_b$. Since $M_b \subseteq M_a$, $M_a \cap M_b = M_b$. And the least positive element of which would be $|b|$.  \end{proof}
+	\end{enumerate}
+
+	%q2
+	\item \begin{proof} Since $d'|a$ and $d''|b$, there exists integers $n, m$ so that $n\cdot d' = a, m\cdot d'' = b$. Since $(a,b)=1$, there exists integers $x_0$ and $y_0$ such that $ax_0+by_0=1$ based on Corollary 1.6.1. Replace $a$ and $b$ in the equation we get $ax_0+by_0=nd'x_0+md''y_0 = (n\cdot x_0)d'+(m\cdot y_0)d'' = 1$. By corollary 1.6.1, $(d', d'')=1$.  \end{proof}
+
+	%q3
+	\item \begin{enumerate}
+		%q3a
+		\item \begin{proof} Since $(a,b)=1$, there exist $x_0, y_0$ such that $ax_0+by_0=1$. And since $a|c, b|c$, there exists integers $n, m$ so that $n\cdot a = c, m\cdot b = c$. Thus multiply both sides of the equation by $m\cdot n$, we get \[m\cdot n\cdot ax_0+m\cdot n\cdot by_0= m\cdot c\cdot x_0 + n\cdot c\cdot y_0\]\[c(m\cdot x_0+n\cdot y_0)= mn.\] Since $n|mn, n|c$, divide both side by n, we get $a(m\cdot x_0+n\cdot y_0)= m$. Then times both side by $b$, we finally get \[ ab(m\cdot x_0+n\cdot y_0)= mb = c.\] Thus by definition $ab|c$. \end{proof}
+		%q3b
+		\item When $a = 2, b = 4, c = 4$, $(a,b)\neq 1$ and $ab\nmid c$.
+	\end{enumerate}
+
+	%q4
+	\item $(3,5)=1$. We first find integers $x_0, y_0$ such that $3x_0+5y_0=1.$ \[5-3\cdot 1 = 2\] \[1-2=-1.\] Thus $x_0=2, y_0=-1.$ By trying, we find that $x_0=2+5=7, y_0=-1-3=-4$ also works. By substitution, we find that for equation $3x_0+5y_0=1$, \[x=2+5k, y=-1-3k\] will be a possible choice for any integer k. Since $47=1\cdot 47$, we have $3\cdot (47\cdot x_0) + 5\cdot (47\cdot y_0) = 47.$ We have \[x=(2+5k)\cdot 47 = 94+235k, y=(-1-3k)\cdot 47 = -47-141k\] for any integer $k$.
+
+	%q5
+	\item \begin{proof} Assume there is an even prime number $n$ such that $n>2$. We know that $1|n, n|n$. Since it is a even number, by definition, 2 divides every even number, thus $2|n$. Thus $\tau (n)>2$ as $2\neq n$, which means that $n$ is composite. Proving by contradicition, there are no even prime number larger than 2. The only positive even number left is 2. Since 2 only has two divisors 1 and itself, it is prime. Thus 2 is the only even prime number. \end{proof}
+
+	%q6
+	\item \begin{proof} We prove this by using induction.
+		\begin{itemize}
+		\item We first prove the base case where $n=1$. $2^n = 2^1 = 2 > 1$. The statement is true.
+		\item Then we discuss the case $n>1$. We assume for some $n>1$, such that \(2^{n} > n\). Then for $n+1$, we have $2^{n+1} = 2^n\cdot 2 > 2\cdot n.$ Since $n>1$, $2n>n+1$, thus $2^{n+1}>n+1.$
+		\end{itemize} According to mathematical induction, for all integers \(n \ge 1\) that \(2^{n} > n\).\end{proof}
 \end{enumerate}
 
 \end{document}
