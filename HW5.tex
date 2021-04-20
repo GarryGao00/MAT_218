@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 5}\medskip
+\end{Large}
+{\bf Due:} Tuesday, April 20, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:} At least one (1) problem must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+
+\hrulefill
+
+\begin{enumerate}
+
+	\item (\S 1.7 \#8). Let \(a, b, n \in \Z\). Prove that the equation \(ax+by = n\) has a solution in the integers when \((a,b) = 1\). State (and prove) a necessary condition for the existence of a solution in the integers if \((a,b)= d \ne 1\).
+
+	\item (\S 1.8 \#4). If \((m,n)=1\), prove that \((m+n,mn)=1\).
+
+	\item (\S 1.8 \#11).  If \((a,n)=d\) and \((r,n)=1\), prove that \((r-a,d)=1\).
+
+	\item (\S 1.10 \#1,2). \textbf{This entire question must be done on your own.} You do \textit{not} need to include words for this question. (You may use a calculator or other computation tools to help.)
+	\begin{enumerate}
+		\item  Write in standard form: \(286\), \(390\), \(1278\), \(842\).
+		\item  Write the product represented by \( \prod\limits_{p \mid 1260} p^{a_{p}} \).
+	\end{enumerate}
+
+	\item \textbf{(This question must be done on your own.)} (Review exercise) Consider a two-player game where there are two stacks of coins, and both stacks contain the same number of coins, \(n\). A turn consists of a player removing any amount of coins they wish from \textit{one} of the stacks (the player may \textit{not} remove coins from both stacks in a single turn), but they must remove at least one coin per turn. Players one and two alternate turns. The player who removes the last coin wins. Prove that, regardless of how many coins player one takes on their turn(s), player two can always win.
+
+	\item \textbf{(This question must be done on your own.)} (Review exercise) Prove that no integer of the form \(4k+3\) is the sum of two perfect squares. In other words, prove that there do not exist integers \(n\), \(m\), and \(k\) with \(4k+3=n^{2}+m^{2}\).
+
+\end{enumerate}
+
+\hrulefill
+
+\begin{enumerate}
+	%q1
+	\item
+	\begin{itemize}
+		\item \begin{proof} Since $a$ and $b$ are relative prime, by Corollary 1.6.1, the set $M_a+M_b$ is the set of all integers. Thus integer $n$ is in the set $M_a+M_b$. By definition there must exist integer $x, y$ that \(ax+by = n.\)\end{proof}
+		\item The equation \(ax+by = n\) has a solution in the integers when \((a,b)= d \ne 1\), and $n$ is a multiple of $d$. \begin{proof} Since $n$ is a multiple of $d$, $n$ is in the set $M_d$. Also by characterizations of the greatest common divisor, $d$ is the least positive element in $M_a+M_b$, or $M_a+M_b = M_d$. Thus $n$ is in the set $M_a+M_b$. This means the equation \(ax+by = n\) has a solution.\end{proof}
+
+		%When $n$ is a multiple of $d$, there exists integer $k$ so that $n=kd$. Also since $d$ is a common divisor of $a,b$, we can rewrite $a, b$ as $a = a_0d,b=b_0d$ for some integer $a_0, b_0$. Then \(ax+by = n\) could be written as \(ax+by = a_0dx+b_0dy = d(a_0x+b_0y)= kd.\) As $d \ne 0$, we can divide both side of the equation by $d$, having $(a_0x+b_0y)= k.$ By the characterizations of the greatest common divisor, (a/d, b/d) = 1. Thus $a_0, b_0$ are relative prime. We have proven that in this case, the equation has a solution.
+	\end{itemize}
+
+	%q2
+	\item question 2
+
+	%q3
+	\item \begin{proof} Since $(r,n)=1$, we have $rx_0+ny_0=1.$ And since $(a,n)=d$, we have that $d$ divides both $a$ and $n$. Thus there exisits integer $i, j$ so that $id=a, jd=n$.
+	\[rx_0+ny_0+ax_0-ax_0=1\] \[(r-a)x_0+(jd)y_0+(id)x_0=1\] \[(r-a)x_0+d(jy_0+ix_0)=1.\] Since $r, a, j, y_0, i, x_0$ are integers, $r-a, jy_0+ix_0$ are both integers. By corollary 1.6.1, \((r-a,d)=1\)\end{proof}
+
+	%q4
+	\item
+	 	\begin{enumerate}
+			%q4a
+	 		\item
+			\begin{itemize}
+				\item $286 = 2 \cdot 11 \cdot 13$
+				\item $390 = 2 \cdot 3 \cdot 5 \cdot 13$
+				\item $1278 = 2 \cdot 3^2 \cdot 71$
+				\item $286 = 2 \cdot 421$
+			\end{itemize}
+
+			%q4b
+			\item \( \prod\limits_{p \mid 1260} p^{a_{p}} = 2^2 \cdot 3^2 \cdot 5 \cdot 7\)
+	 	\end{enumerate}
+
+	%q5
+	\item \begin{proof} We use strong induction here.
+		\begin{itemize}
+			\item We first proof the base case when $n=1$ and $n=2$. If $n=1$, since the player may not remove coins from both stacks in a single turn, player one can only take one coin from one stack in the first turn. This stack becomes empty. And by taking the only coin from the second stack, player two wins. If $n=2$, player one have two choices. First is to take two coins from one stack. Then player two wins by taking the only two coins from the other stack. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=1$. We have proven that in this case player two wins. Thus when $n=1$ or $2$, player two always wins.
+			\item The other case is when $n>2$. Assume for integer $2<k<n$, when $n=k$, player two always wins. Then when $n=k+1$, there are two chioces for player one. First is to take two coins from one stack. Then player two can take two coins from the other stack. Then the question is reduced to when $n=k-1$ who wins. Since $k-1<k<n$, by our assumption player two wins. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=k$. We have assumed that in this case player two wins. Thus in either case, player two always wins.
+		\end{itemize} By proving the base case and the other case, we know that player two always wins. \end{proof}
+
+	%q6
+	\item \begin{proof}Use the division algorithm, there are four possible cases for integer $n$: $n=4q,n=4q+1,n=4q+2,n=4q+3$ for some integer $q$. Corresponding to these cases are four possible values of $n^2$:\[(4q)^2= 16q^2= (4q^2)4,\] \[(4q + 1)^2= 16q^2+ 8q + 1 = (4q^2+ 2q)4 + 1,\] \[(4q + 2)^2= 16q^2+ 16q + 4 = (4q^2+ 4q + 1)4,\] \[(4q + 3)^2= 16q^2+ 24q + 9 = (4q^2+ 6q + 2)4 + 1.\] Here we can tell that the square of $n$ can only be a multiple of 4 or one more than a multiple of 4. Similarly, integer $m$ follows the same rule. Here we can divide the problem into two cases:
+	\begin{itemize}
+		\item $n^2=4k_1, m^2=4k_2, n^2+m^2=4k_3$
+		\item $n^2=4k_1+1, m^2=4k_2, n^2+m^2=4k_3+1$
+		\item $n^2=4k_1, m^2=4k_2+1, n^2+m^2=4k_3+1$
+		\item $n^2=4k_1+1, m^2=4k_2+1, n^2+m^2=4k_3+2$
+	\end{itemize}
+	for some integer $k_1, k_2, k_3$.
+	We can see that $n^2+m^2 \neq 4k+3$ in every case. And thus we can conclude that no integer of the form $4k+3$ is the sum of two perfect squares. \end{proof}
+
+\end{enumerate}
+
+\end{document}
