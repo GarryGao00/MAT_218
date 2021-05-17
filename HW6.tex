@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 6}\medskip
+\end{Large}
+{\bf Due:} Friday, April 23, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:} At least one (1) problems must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item (\S 1.10 \#8). Explain (give justification for) which numbers \(n\) have the values \(\tau(n)\) below.
+	\begin{enumerate}
+		\item \(\tau(n) = 14\).\\
+			Since \( \tau (n)= \prod\limits^{k}_{i=1} (a_i+1) \) when \( n= \prod\limits^{k}_{i=1} p_i^{a_{i}},\) and we have to choose $\tau (n) = 14,$ we find the factorizations of 14. The only factorizations of 14 are $14 = 1 \cdot 14, 14= 2\cdot 7.$ This means that $n=p^{13}$ for any prime $p$, and $n=p^1q^6$ for any distinct primes $p, q$ are the only possibilities.
+		\item \(\tau(n) = 15\).\\
+			Similarly we find the factorizations of 15. The only factorizatinos of which are $1\cdot 15$ and $3\cdot 5$. Thus the only possibilities for $n$ is $n=p^{14}$ for any prime $p$ , and $n=p^2q^4$ for any distinct primes $p, q.$
+	\end{enumerate}
+
+	%q2
+	\item (\S 1.10 \#11). Prove that \(n\) is a \(k\)th power (i.e., \(n = m^{k}\) for some integer \(m\)) if and only if \(k\) divides each of the exponents in the standard form of \(n\).
+	\begin{proof}
+		If $m=p_1^{a_1}p_2^{a_2}p_3^{a_3}\ldots p_i^{a_i},$ then $m^k = (p_1^{a_1}p_2^{a_2}p_3^{a_3}\ldots p_i^{a_i})^k = p_1^{a_1k}p_2^{a_2k}p_3^{a_3k}\ldots p_i^{a_ik}.$ Thus if $n=m^k,$ $n$ could be and only could be written in the same standard form, as an integer can be written in standard form in exactly one way. We easily get $k$ divides each of the exponents in the standard form of $n$.
+	\end{proof}
+
+	%q3
+	\item \textbf{(This question must be done on your own.)} A local restaurant offers a meat and cheese sandwich. You can choose one of three kinds of bread, one of four kinds of meat, and one of three kinds of cheese.  How many sandwiches are possible?  Assume that anyone ordering this particular sandwich wants a piece of bread and a piece of cheese and a piece of meat.
+
+	A total of 36 kinds of sandwich are possible. This is because ${3 \choose 1} \cdot {4 \choose 1} \cdot {3 \choose 1} = 36.$
+
+	%q4
+	\item How many four digit numbers are there which are multiples of at least one of \(2\) or \(5\)?  Assume \(0985\) or \(0027\) are not four digit numbers (i.e. the thousands place should not be \(0\)).
+
+	5400 four digit numbers would. We know that the multiples of 5 would end in either 5 or 0, and the multiples of 2 would be an even number. Since numbers end in 0 are even numbers, to find the four digit numbers are there which are multiples of at least one of \(2\) or \(5\), we find all the four digits number that are either even or end in 5. From 1000 to 1009, there are 5 even numbers and 1 number ends in 5. $6 \cdot (10000-1000) \div 10 = 5400$ In total, we have 5400 numbers that are multiples of at least one of \(2\) or \(5\).
+
+	%q5
+	\item In poker, a hand consists of five cards dealt to a player.  ``Four of a kind" means your hand consists of four cards of the same face value.  How many different ``four of a kind" hands are there where we do not care what order the cards are dealt to you?
+
+	(Deck of card background in case you need it.  A standard deck of cards has 52 cards.  There are four suits (hearts $\heartsuit$, spades $\spadesuit$, diamonds $\diamondsuit$, and clubs $\clubsuit$) and each suit has 13 cards. Each suit has one card of each ``face value'': the numbers \(2\) through \(10\), the Ace, and the ``face cards":  jack, queen, and king.   A ``hand" is the set of cards you are dealt in a game like poker.)
+
+	There are 624 different kinds. In each suit, every face value is unique. Thus in order to have four cards that are the same face value, there are only 13 possibilities. And in order to form a hand, we will have an extra card. Since one of the face value is already all taken, we can only choose a face value from the rest 12 values. And for each face value, there are 4 suits to choose from. Thus the final answer would be ${13 \choose 1} \cdot {12 \choose 1} \cdot {4 \choose 1} = 624.$
+
+	%q6
+	\item (\S 1.9 \#12).  Let \(a\) be a fixed integer. Define the function \(f(n) = (a,n)\). Prove that \(f\) is multiplicative.
+
+	\begin{proof}
+		Find two arbitrary relative prime integers $n, m$ so that $n = p_1^{n_1}p_2^{n_2}p_3^{n_3}\ldots p_i^{n_i}, m = q_1^{m_1}q_2^{m_2}q_3^{m_3}\ldots q_j^{m_j},$. Also rewrite $a$ in the form $p_1^{a_1}p_2^{a_2}p_3^{a_3}\ldots p_i^{a_i} \times q_1^{a_1}q_2^{a_2}q_3^{a_3}\ldots q_i^{a_i}.$ By definition, \(f(n) \cdot f(m)= (a,n) \cdot (a,m).\) From corollary 1.10.2, we know that \((a,n) \cdot (a,m) = p_1^{min(a_1, n_1)}p_2^{min(a_2, n_2)}p_3^{min(a_3, n_3)}\ldots p_i^{min(a_j, n_j)} \times q_1^{min(a_1, m_1)}q_2^{min(a_2, m_2)}q_3^{min(a_3, m_3)}\ldots q_j^{min(a_j, m_j)}.\) Meanwhile, $nm = p_1^{n_1}p_2^{n_2}p_3^{n_3}\ldots p_i^{n_i} \times q_1^{m_1}q_2^{m_2}q_3^{m_3}\ldots q_j^{m_j}$.\\ $(a, nm) =  p_1^{min(a_1, n_1)}p_2^{min(a_2, n_2)}p_3^{min(a_3, n_3)}\ldots p_i^{min(a_j, n_j)} \times \\ q_1^{min(a_1, m_1)}q_2^{min(a_2, m_2)}q_3^{min(a_3, m_3)}\ldots q_j^{min(a_j, m_j)} = (a, n)\cdot (a, m).\) Thus we have $f(n)\cdot f(m) = f(nm)$. By definition of multiplicative function, this function is multiplicative.
+	\end{proof}
+
+%\\ = p_1^{min(a_1, n_1)+min(a_1, m_1)}p_2^{min(a_2, n_2)+min(a_2, m_2)}p_3^{min(a_3, n_3)+min(a_3, m_3)}\ldots p_i^{min(a_i, n_i)+min(a_i, m_i)}
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}

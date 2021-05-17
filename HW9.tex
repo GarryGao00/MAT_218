@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{halloweenmath}
+
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 9}\medskip
+\end{Large}
+{\bf Due:} Tuesday, May 4, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:}  At least two (2) problems must be done in \LaTeX.
+
+{\bf Name:} Garry Gao
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item (\S 2.2 \#1).  If \(a \equiv b \mod m\) and \(c \equiv d \mod m\), prove that \(ax+cy \equiv bx+dy \mod m\) for any integers \(x\) and \(y\).
+
+	\begin{proof}
+		By the arithmetic of congruence, if \(a \equiv b \mod m\), with integer $x$ we have \(ax \equiv bx \mod m.\) Similarly, we can have \(cy \equiv dy \mod m\) for any integer $y$. Using property 1 of Theorem 2.2.1, we easily derive \(ax+cy \equiv bx+dy \mod m\) from last two equations.
+	\end{proof}
+
+	%q2
+	\item
+	\begin{enumerate}
+		\item Prove that
+		\[ 3^{n} = \sum_{k=0}^{n} \binom{n}{k} 2^{k}. \]
+
+		\begin{proof}
+			Since in this case $n \geq k,$ we always have $1^{n-k} = 1.$ By binomial theorem, we have:
+			\[ 3^{n} = (2+1)^n = \sum_{k=0}^{n} \binom{n}{k} 2^{k} 1^{n-k} = \sum_{k=0}^{n} \binom{n}{k} 2^{k}. \]
+		\end{proof}
+
+		\item Generalize part (a) to find the sum
+		\[\sum_{k=0}^{n} \binom{n}{k} r^{k}, \]
+		for any real number \(r\).\\
+
+		Similarly, we have $1^{n-k} = 1.$ Thus \[\sum_{k=0}^{n} \binom{n}{k} r^{k} =  \sum_{k=0}^{n} \binom{n}{k} r^{k} 1^{n-k} = (r+1)^n,\] for any real number $r$.
+	\end{enumerate}
+
+	%q3
+	\item (\S 2.2 \#11).
+	\begin{enumerate}
+		\item If \(p\) is a prime, prove that the binomial coefficient \( \binom{p}{r} \equiv 0 \mod p \) for each \(r\) with \(1 \le r \le p-1\).
+
+		\begin{proof}
+			Since \(1 \le r \le p-1\), by definition \( \binom{p}{r} = \frac{p!}{(p-r)!r!} = p \cdot \frac{(p-1)!}{(p-r)!r!} = p \cdot \frac{(p-1)(p-2)\cdots (p-r+1)}{r!}.\) In the previous homework, we have proven that $n!$ always divides the product of $n$ consecutive integers, we know that $\frac{(p-1)(p-2)\cdots (p-r+1)}{r!}$ is an integer. Replace $\frac{(p-1)(p-2)\cdots (p-r+1)}{r!}$ with $i$. Since there exists integer $i$ so that $pi= \binom{p}{r}, p \mid \binom{p}{r}.$ By definition 2.1.1, \( \binom{p}{r} \equiv 0 \mod p \) for each \(r\) with \(1 \le r \le p-1\).
+		\end{proof}
+
+		\item Use (a) to prove that \((a+b)^{p} \equiv a^{p}+b^{p} \mod p\). (Who says mathematicians don't have a sense of humor? This result is often referred to as ``The Freshman's Dream''.)
+
+		\begin{proof}
+			By binomial theorem, \[(a+b)^{p} = \sum_{k=0}^{p} \binom{p}{k} a^{k} b^{p-k} = a^p + b^p + \sum_{k=1}^{p-1} \binom{p}{k} a^{k} b^{p-k},\]
+			\[(a+b)^{p} - (a^p + b^p) = \sum_{k=1}^{p-1} \binom{p}{k} a^{k} b^{p-k}.\]
+			From (a) we know that \( \binom{p}{k} \equiv 0 \mod p \) for each \(k\) with \(1 \le k \le p-1.\) Thus $p \mid \binom{p}{k}$ for \(1 \le k \le p-1.\) By property 2 of "Divides", $p \mid \sum_{k=1}^{p-1} \binom{p}{k} a^{k} b^{p-k}.$ Thus $p \mid (a+b)^{p} - (a^p + b^p).$ By definition 2.1.1, \((a+b)^{p} \equiv a^{p}+b^{p} \mod p.\)
+		\end{proof}
+	\end{enumerate}
+
+	%q4
+	\item \textbf{(This question must be done on your own.)} (Review exercise) An integer \(n\) is called \textit{square-free} if the \(1\) is the only perfect square which divides \(n\). Suppose \(n\) is square-free and \(n \mid m^2\) for some integer \(m\). Prove that \(n \mid m\). (Hint: consider prime factorizations.)
+
+	\begin{proof}
+		We first write $m$ in the standard form \(m = p_{1}^{a_{1}} p_{2}^{a_{2}}\cdots p_{k}^{a_{k}},\) and $m^2 = p_{1}^{2a_{1}} p_{2}^{2a_{2}}\cdots p_{k}^{2a_{k}}.$ Since $n \mid m^2,$ $n$ would only have prime factors from $p_1$ to $p_k.$ In other words, it can be written as \(n = p_{1}^{b_{1}} p_{2}^{b_{2}}\cdots p_{k}^{b_{k}}.\) Suppse for an integer $ 1 \leq i \leq k, b_i \geq 2,$ then $n$ could be written as \(n = p_i^2 p_{1}^{b_{1}} p_{2}^{b_{2}}\cdots p_i^{b_i-2} \cdots p_{k}^{b_{k}}.\) In this case $n$ is divisible by the perfect square $p_i^2.$ Since $n$ is square-free, this should not happen. $b_i = 1, 0$ for $1 \leq i \leq k.$
+
+		Since $a_1 \ldots a_k$ are all larger than or equal to 1, $b_i$ would be the smaller of $a_i$ and $b_i$. By Corollary 1.10.2, $(m,n)=p_{1}^{b_{1}} p_{2}^{b_{2}}\cdots p_{k}^{b_{k}}=n.$ Thus, $n \mid m.$
+	\end{proof}
+
+	%q5
+	\item \textbf{(This question must be done on your own.)} (Review exercise) Define the function \(\rad : \Z_{+} \to \Z_{+}\), called the \textit{radical}, so that for any positive integer \(n\), \(\rad(n)\) is the largest square-free integer dividing \(n\); equivalently, if \(n = p_{1}^{a_{1}} p_{2}^{a_{2}}\cdots p_{k}^{a_{k}}\) is standard form, then \(\rad\!\left(n\right) = p_{1}p_{2}\cdots p_{k}\). Prove that \(\rad\) is multiplicative. Is \(\rad\) completely multiplicative?
+
+	\begin{proof}
+		Find integers $n, m$ so that $(n,m) = 1.$ Write them in standard forms. \(n = p_{1}^{a_{1}} p_{2}^{a_{2}}\cdots p_{k}^{a_{k}}, m = q_{1}^{b_{1}} q_{2}^{b_{2}}\cdots q_{k}^{b_{k}}.\) Since they are relative prime, they do not share prime factors. Thus $n\cdot m = p_{1}^{a_{1}} p_{2}^{a_{2}}\cdots p_{k}^{a_{k}} \cdot q_{1}^{b_{1}} q_{2}^{b_{2}}\cdots q_{k}^{b_{k}}.$ By the definition of radical, \(\rad\!\left(n\right) = p_{1}p_{2}\cdots p_{k}, \rad\!\left(m\right) = q_{1}q_{2}\cdots q_{k}, \rad\!\left(nm\right) = p_{1}p_{2}\cdots p_{k}\cdot q_{1}q_{2}\cdots q_{k}.\) Since $rad(mn) = rad(m)\cdot rad(n),$ this function is multiplicative.
+
+		Since when $n = 2, m = 4, rad(mn) = rad(8) = 2, rad(m)\cdot rad(n) = 2 \cdot 2 = 4, rad(mn) \neq rad(m)\cdot rad(n).$ Thus this function is not completely multiplicative.
+	\end{proof}
+
+
+
+
+\end{enumerate}
+
+\end{document}

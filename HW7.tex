@@ -1,0 +1,94 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 7}\medskip
+\end{Large}
+{\bf Due:} Tuesday, April 27, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:} At least two (2) problems must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item (\S 1.10 \#9). \textbf{(This question must be done on your own.)} Let \(n\) be a positive integer. Prove that \(\tau(n)\) is odd if and only if \(n\) is a perfect square.
+
+	\begin{proof}
+		We first write $n$ in standard form. $n=p_1^{a_1}p_2^{a_2}\ldots p_k^{a_k}.$ According to Theorem 1.10.2, $\tau (n) = (a_1+1)(a_2+1)\ldots (a_k+1),$ where $a$s are the exponents of $n$'s prime factors. If $\tau (n)$ is odd, then it is not divisible by 2. All its factors are not divisible by 2 either. In other words, $(a_1+1),(a_2+1),\ldots ,(a_k+1)$ are all odd numbers. Here we have that $a_1, a_2, \ldots , a_k$ are all even. Since they are all divisible by 2, we can have $b_1, b_2, \ldots , b_k$ so that $2\cdot b_1 = a_1, 2\cdot b_2 = a_2, \ldots 2\cdot b_k = a_k.$ We can find an integer $m$ so that $m=p_1^{b_1}p_2^{b_2}\ldots p_k^{b_k}.$ And $m\cdot m =  p_1^{b_1}p_2^{b_2}\ldots p_k^{b_k} \times p_1^{b_1}p_2^{b_2}\ldots p_k^{b_k} = p_1^{2b_1}p_2^{2b_2}\ldots p_k^{2b_k} = p_1^{a_1}p_2^{a_2}\ldots p_k^{a_k} = n.$ $n$ is the perfect square of $m$. Thus $\tau (n)$ is even if and only if $n$ is a perfect square.
+	\end{proof}
+
+	%q2
+	\item (\S 1.9 \#8). \textbf{(This question must be done on your own.)} If \(a, b,\) and \(c\) are integers which are relatively prime in pairs, prove that \(\tau(abc) = \tau(a)\tau(b)\tau(c)\). Show that \((a,b,c)=1\) is not sufficient to imply that \(\tau(abc) = \tau(a)\tau(b)\tau(c)\).
+
+	\begin{proof}
+		Since a and b are not divisible by c, $a\cdot b$ is not divisible by $c.$ $(ab, c) = 1.$ Since $\tau$ function is multiplicative, we have $\tau (abc) = \tau (ab) \cdot \tau(c).$ And since a and b are relatinely prime, $(a,b) = 1,$ $\tau (ab) = \tau (a) \cdot \tau (b).$ Thus $\tau (abc) = \tau (ab) \cdot \tau(c) = \tau(a)\tau(b)\tau(c).$ If $a=2, b=3, c=4, (a,b,c)=1. \tau(a)\tau(b)\tau(c) = \tau(2)\tau(3)\tau(4) = 2 \cdot 2 \cdot 3 = 12$ However, $\tau (abc) = \tau (24) = 8 \ne 12.$ Thus \((a,b,c)=1\) is not sufficient to imply that \(\tau(abc) = \tau(a)\tau(b)\tau(c)\).
+	\end{proof}
+
+
+	%q3
+	\item (\S 1.11 \#1). You do \textit{not} need to include words for this question, but you should show your work.
+	\begin{enumerate}
+		\item  Calculate \(\sigma(72)\).\\
+			\(\sigma(72) = \sigma(8)\sigma(9) = (1+2+4+8)\cdot (1+3+9) = 195.\)
+		\item  Calculate \(\sigma(250)\).\\
+			\(\sigma(250) = \sigma(5^3)\sigma(2) = \frac{5^{3+1}-1}{5-1} \cdot \frac{2^{1+1}-1}{2-1} = 156 \cdot 3 = 468.\)
+	\end{enumerate}
+
+	%q4
+	\item (\S 1.11 \#1). For what values of \(n\) does \(\sigma(n) = b\) in the following scenarios? You do not need to prove your answers rigorously, but you should explain how you know.
+	\begin{enumerate}
+		\item  \(b = 14\).\\
+			Since $b=14,$ $\prod_{p|n} (1+p+\ldots +p^{a_p}) = 14= 1 \cdot 14 = 2 \cdot 7.$ If only one prime divides $n$, $p=13$ and $a_p=1$ satisfy the equation. If there are two primes, we have $\sigma (i) = 2 $ as $14 = 2 \cdot 7.$ Since we have proven that $\sigma$ values cannot be 2, this case is not valid.
+		\item  \(b = 15\).\\
+			Since $b=15,$ $\prod_{p|n} (1+p+\ldots +p^{a_p}) = 15 = 1 \cdot 15 = 3 \cdot 5.$ If only one prime, divides $n$, $p=2, a_p=4$ satisfy the equation. If there are two prime divisors, there are no positive integer smaller than 15 have a $\sigma$value of 5. This case is not valid.
+	\end{enumerate}
+
+	%q5
+	\item (\S 1.11 \#12). Define \(f : \Z_{+} \to \Z_{+}\) as follows: \(f(n)= \left(-1\right)^{k}\) where \(k\) is the total number of prime factors of \(n\) counting repetitions. In other words, if \(\displaystyle n = \prod_{i=1}^{\ell} p_{i}^{a_{i}}\) is standard form, then \(\displaystyle k = \sum_{i=1}^{\ell} a_{i}\). For example, if \(n = 12\), \(k=3\). Let \(\displaystyle F(n) = \sum_{d \mid n} f(d)\). Prove that \(F(n)\) is either \(0\) or \(1\) for every positive integer \(n\). For what integers is \(F(n) = 0\)?\\
+
+	Since the proof is very hard, I seeked help from the computer. By using brute force algorithm, we can easily calculate $F(1)$ to $F(9999)$. It is obvious that when $n$ is a perfect square, $F(n)=1$, otherwise $F(n)=0$.
+
+	\begin{proof}
+		First we have $F(1) = f(1) = (-1)^0 = 1$. Then for all prime numbers, we have $F(n) = f(1) + f(n) = 1 + (-1)^1 = 0,$ as all prime numbers only have two divisors, 1 and itself, with one prime factor.
+
+		In the first problem, we have proven that \(\tau(n)\) is odd if and only if \(n\) is a perfect square, we can seperate the question into two cases. $n$ is a perfect square or it is not a perfect square.
+		\begin{itemize}
+			\item First case is $n$ is not a perfect square. We have $F(n) = f(1) + f(d_1) + \ldots f(d_j) + f(n).$ Since $f(n)$ would only be 1 or -1 for $n>1$, we have two cases.
+				\begin{itemize}
+					\item $f(n) = 1.$ Then k is even. If we pair the divisors of n so that it is always $a\cdot b = n,$ for all $k$ pairs of the divisor pairs $a, b$, it can only be both odd or both even. $f(a)+f(b) = -2$ or $2$ for each case. Then $F(n) = f(1) + -2 + 2 \ldots + -2 + f(n) = 1 + -2 + 1 =0$
+					\item $f(n) = -1.$
+				\end{itemize}
+			\item Second case is $n$ is a perfet square.
+		\end{itemize}
+		In conclusion, \(F(n)\) is either \(0\) or \(1\) for every positive integer \(n\). For $n$ which are perfect square numbers, \(F(n) = 0\).\\
+	\end{proof}
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}

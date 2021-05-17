@@ -1,0 +1,120 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 8}\medskip
+\end{Large}
+{\bf Due:} Friday, April 30, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:} At least two (2) problems must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item Determine whether each of the following relations is reflexive, symmetric, and transitive (you should check each individual property, not all at once). If a certain property fails, provide a specific counterexample.
+	\begin{enumerate}
+		\item The set \(S = \Z\) and \(a \sim b\) if and only if \(a-b=1\).
+			\begin{itemize}
+				\item Reflexivity: Take an arbitrary integer $a$ and clearly $a\sim a$ does not hold, as $a-a=0$ for all real numbers, and $0 \ne 1$. Hence $\sim$ is not reflexive. For example, let $a$ be 1, $1-1 \ne 1.$
+				\item Symmetry: Let $a = 2, b=1$. Clearly $a \sim b$ as $a-b=1$, but $b-a \ne 1$. Thus $\sim$ is not symmetric.
+				\item Transitivity: Let $a=3, b=2, c=1$ so that $a\sim b, b\sim c.$ Since $a-c = 2 \ne 1, a~c$ does not hold. Thus $\sim$ is not transitive.
+			\end{itemize}
+		\item The set \(S = \Z\) and \(a \sim b\) if and only if \(a\) and \(b\) are even.
+			\begin{itemize}
+				\item Reflexivity: Take an arbitrary integer $a$ and clearly $a\sim a$ does not hold some times, as if $a=1$, $a \nsim a$. Hence $\sim$ is not reflexive.
+				\item Symmetry: Assume $a \sim b$, then $a,b$ are both even. Then $b \sim a$. Thus $\sim$ is symmetric.
+				\item Transitivity: Find three arbitrary integers $a,b,c$ so that $a\sim b, b\sim c.$ Then $a, b, c$ are all even. $a~c$ does hold. Thus $\sim$ is transitive.
+			\end{itemize}
+		\item The set \(S = \Z\) and \(a \sim b\) if and only if \(a \mid b\).
+			\begin{itemize}
+				\item Reflexivity: Take an arbitrary even integer $a$ and clearly $a\sim a$ does hold, as $a \mid a$. Hence $\sim$ is reflexive.
+				\item Symmetry: Let $a=1, b=2.$ Although $a \sim b$, as $1 \mid 2$, $2 \nmid 1$.  Thus $\sim$ is not symmetric.
+				\item Transitivity: Find three arbitrary integers $a,b,c$ so that $a\sim b, b\sim c.$ Then $a \mid b, b\mid c$. by theorem 1.1.1.1, $a \mid c$. Thus $a\sim c$ does hold. Thus $\sim$ is transitive.
+			\end{itemize}
+	\end{enumerate}
+
+	%q2
+	\item Let \(S\) be the set of real numbers (i.e., \(S = \mathbb{R}\)), and define the relation \(\sim\) on \(S\) by \(r \sim s\) if and only if \(r-s\) is an integer. Prove that this is an equivalence relation and describe what the equivalence classes look like.
+
+	\begin{proof}
+		\begin{itemize}
+			\item Reflexivity: Take $a \in \mathbb{R},$ and clearly $a\sim a$ holds, as $a-a=0$ for all real numbers, and 0 is an integer. Hence $\sim$ is reflexive.
+			\item Symmetry: Take $a,b \in \mathbb{R}.$ If $a-b$ is an integer, then $b-a$ would be the additive inverse of which, and it would also be an integer. In other words, if $a \sim b$ then $b \sim a.$ Hence $\sim$ is symmetric.
+			\item Transitivity: Take $a,b,c \in \mathbb{R},$ assume $a\sim b, b\sim c$ are both true. Find two integers $n, m$ so that $a-b = n, b-c=m$, then $a-c = n+m.$ Since $n+m$ is an integer, $a \sim c.$ Thus $\sim$ is transitive.
+		\end{itemize}
+		By checking relation $\sim$ is reflexive, symmetric and transitive, we have proven that it is an equivalence relation.
+	\end{proof}
+
+	The equivalence class for $a \in \mathbb{R}$ would be $M_1 + \{ a \} .$
+
+	%q3
+	\item Let \(S\) be the set of ordered pairs \(S = \left\{(a,b) \mid a,b \in \Z, b \ne 0 \right\}\). Define the relation \(\sim\) so that \((a,b) \sim (c,d)\) if and only if \(ad-bc = 0\). Prove that \(\sim\) is an equivalence relation. Do not use division in this problem.
+
+	(Note: This is a set theoretic construction of the set of rational numbers \(\mathbb{Q}\) from the set of integers \(\Z\). The rational number \(\frac{a}{b}\) is defined to be the equivalence class containing the pair \((a,b)\).)
+
+	\begin{proof}
+		\begin{itemize}
+			\item Reflexivity: Take $(a,b)$ in $S,$ and clearly $(a,b)\sim (a,b)$ holds, as $ab-ab=0$ for all $a$s and $b$s. Hence $\sim$ is reflexive.
+			\item Symmetry: Take $(a,b), (c,d)$ in $S.$ If $(a,b) \sim (c,d),$ then $ad-bc = 0 = bc-ad$. Thus $(c,d) \sim (a,b).$ Hence $\sim$ is symmetric.
+			\item Transitivity: Take $(a,b), (c,d), (e,f)$ in $S$ so that $(a,b)\sim (c,d), (c,d)\sim (e,f).$ We then have $ad-bc = cf-de = 0.$ Since $ad = bc, ad(ef) = bc(ef) = af(de) = eb(cd).$ Also because $cf=de, af(de) = eb(cd) = eb(de).$ $af(de) = eb(de).$ If $e \ne 0, af = eb, af - eb = 0.$ The relation holds for $(a,b), (e,f)$. If $e=0$, then since $cf-de = 0, cf = 0.$ By definition $f$ cannot be zero thus in this case $c=0.$ Since we also have $ad-bc=0, ad=0.$ Similarly, $a=0$ as $d$ cannot be zero. Since $a=e=0,$ $af-eb=0.$ The relation holds for $(a,b), (e,f)$ in this case as well. Thus $\sim$ is transitive.
+		\end{itemize}
+		By checking relation $\sim$ is reflexive, symmetric and transitive, we have proven that it is an equivalence relation.
+	\end{proof}
+
+	%q4
+	\item A friend tries to convince you that the reflexive property is redundant in the definition of an equivalence relation because they claim that symmetry and transitivity imply it.  Here is the argument they propose:
+
+	\begin{quote}
+		``If \(a \sim b\), then \(b \sim a\) by symmetry, so \(a \sim a\) by transitivity.  This gives the reflexive property."
+	\end{quote}
+
+	Now you know that their argument must be wrong because one of the examples in Problem 1 is symmetric and transitive but not reflexive.  Pinpoint the error in your friend's argument. Be as explicit and descriptive as you can.
+
+	\emph{Answer:} To prove the symmetry of a relationship, we would always assume $a \sim b$. However, when proving the reflexivity of a function, we need to prove $a \sim a$ without additional assumptions. Thus in this case if $a \sim b$ does not hold when $b = a$, the relationship would not be reflexive, although we still have a chance to prove its symmetric. For example relation $a \sim b$ if and only if $\mid a - b \mid = 1$ is symmetric but not reflexive.
+
+	%q5
+	\item (\S 2.1 \#7).  \textbf{(This question must be done on your own.)} Let \(a, b,\) and \(r\) be integers. Prove that if \(a \mid b\), then \(M_{a}+\left\{ r\right\} \supseteq M_{b}+\left\{ r\right\}\).
+
+	\begin{proof}
+		By Definition 2.1.2, \(M_{b}+\left\{ r\right\} = \left\{ qb + r: q = 0, \pm 1, \pm 2, \ldots \right\}.\) Since $a \mid b, b = na$ for some integer $n.$ Then all $q$s, $qb+r = qna + r.$ Since $qn$ is an integer, $qna + r$ is an element of \(M_{a}+\left\{ r\right\}.\) Thus every element in \(M_{b}+\left\{ r\right\}\) is in \(M_{a}+\left\{ r\right\},\) \(M_{a}+\left\{ r\right\} \supseteq M_{b}+\left\{ r\right\}\).
+	\end{proof}
+
+	%q6
+	\item (\S 2.1 \#9). Let \(m, r_{1},\) and \(r_{2}\) be integers. Prove that \(M_{m}+\left\{r_{1}\right\}\) and \(M_{m}+\left\{r_{2}\right\}\) are disjoint or identical.
+
+	\begin{proof} We seperate this problem into two cases.
+		\begin{itemize}
+			\item First, $r_1 = r_2.$ It is obvious in this case that \(M_{m}+\left\{r_{1}\right\}\) and \(M_{m}+\left\{r_{2}\right\}\) are identical.
+			\item Second, $r_1 \ne r_2.$ Assume \(M_{m}+\left\{r_{1}\right\} \cap M_{m}+\left\{r_{2}\right\} = S,\) and S is not empty. By well-ordering principle, every nonempty set contains a least element. Call the least element in $S$ $a.$ Then by our assumption, $a$ belongs to both \(M_{m}+\left\{r_{1}\right\}\) and \(M_{m}+\left\{r_{2}\right\}\), and it is an integer. This contradicts with Theorem 2.1.2 that every integer only belongs to one of the $m$ residue classes. Thus by contradiction, set $S$ is empty, \(M_{m}+\left\{r_{1}\right\} \cap M_{m}+\left\{r_{2}\right\} = \varnothing.\) Thus two sets are disjoint.
+		\end{itemize}
+		In conclusion, \(M_{m}+\left\{r_{1}\right\}\) and \(M_{m}+\left\{r_{2}\right\}\) are disjoint or identical.
+	\end{proof}
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}

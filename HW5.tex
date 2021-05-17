@@ -63,7 +63,7 @@
 	\end{itemize}
 
 	%q2
-	\item question 2
+	\item \begin{proof} Use the division algorithm, we can have an equation $m = nq +r$. And if we add $n$ to both sides of the equation, we have $m+n = n(q+1) +r$. Use the Euclidean Algorithm, from the first equation we know that $(m,n)=(n, r)$, which is one from the question. And from the second equation, we have $(m+n, n) = (n, r)$, which is thus also one. Similarly we can establish equation $n=mq_1+r_1$ with different integers $q_1, r_1$ and get $(m+n, m) = 1$. Since $(m+n, m) = 1, (m+n, n) = 1$, by corollary 1.6.2, $(m+n, mn) =1.$\end{proof}
 
 	%q3
 	\item \begin{proof} Since $(r,n)=1$, we have $rx_0+ny_0=1.$ And since $(a,n)=d$, we have that $d$ divides both $a$ and $n$. Thus there exisits integer $i, j$ so that $id=a, jd=n$.
@@ -88,8 +88,8 @@
 	%q5
 	\item \begin{proof} We use strong induction here.
 		\begin{itemize}
-			\item We first proof the base case when $n=1$ and $n=2$. If $n=1$, since the player may not remove coins from both stacks in a single turn, player one can only take one coin from one stack in the first turn. This stack becomes empty. And by taking the only coin from the second stack, player two wins. If $n=2$, player one have two choices. First is to take two coins from one stack. Then player two wins by taking the only two coins from the other stack. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=1$. We have proven that in this case player two wins. Thus when $n=1$ or $2$, player two always wins.
-			\item The other case is when $n>2$. Assume for integer $2<k<n$, when $n=k$, player two always wins. Then when $n=k+1$, there are two chioces for player one. First is to take two coins from one stack. Then player two can take two coins from the other stack. Then the question is reduced to when $n=k-1$ who wins. Since $k-1<k<n$, by our assumption player two wins. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=k$. We have assumed that in this case player two wins. Thus in either case, player two always wins.
+			\item We first prove the base case when $n=1$ and $n=2$. If $n=1$, since the player may not remove coins from both stacks in a single turn, player one can only take one coin from one stack in the first turn. This stack becomes empty. And by taking the only coin from the second stack, player two wins. If $n=2$, player one have two choices. First is to take two coins from one stack. Then player two wins by taking the only two coins from the other stack. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=1$. We have proven that in this case player two wins. Thus when $n=1$ or $2$, player two always wins.
+			\item The other case is when $n>2$. Assume for some integer $k, m$ that $2\leq k \leq m$,  player two always wins. Then when $n=m+1$, there are two chioces for player one. First is to take two coins from one stack. Then player two can take two coins from the other stack. Then the question is reduced to when $n=m-1$ who wins. Since $m-1<m$, by our assumption player two wins. Or player one can take only one coin from one stack, then player two can take one coin from the other stack, reform the situation as $n=m$. According to the induction hypothesis, we have assumed that in this case player two wins. Thus in either case, player two always wins.
 		\end{itemize} By proving the base case and the other case, we know that player two always wins. \end{proof}
 
 	%q6

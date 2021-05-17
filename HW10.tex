@@ -1,0 +1,97 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{halloweenmath}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 10}\medskip
+\end{Large}
+{\bf Due:} Friday, May 7, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:}  All problems must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item (\S 2.3 \#6). If \(a\) is a unit in \(Z_{m}\), prove that \(m-a\) is a unit in \(Z_{m}\).
+
+	\begin{proof}
+		Let integer $b = (m-a, m).$ By definition, all elements in the ring is non-negative, thus $b \geq 1.$ We also have $bi = m; bj = m-a$ for some integers $i,j.$ Thus we $a = m-bj = bi-bj = b(i-j).$ Since $a$ is a unit in \(Z_{m},\) by definition $(m,a) = 1.$ Replace $m,a$ in the equation so that we have $(b(i-j), bi) = 1.$ Since we know that $b$ is definitly a common divisor of $b(i-j)$ and $bi,$ $b\leq 1.$ Since $1 \leq b \leq 1, b=1.$ By theorem 2.3.1, $m-a$ is a unit as $(m-a, m) = 1.$
+	\end{proof}
+
+	%q2
+	\item (\S 2.3 \#14). Let \(p\) and \(q\) be odd primes.  Which \(a \in Z_{pq}\) have the property that that \(a^{2} \equiv 1 \mod pq\)?
+
+	Let \(a^2-1 \in Z_{pq},\) then $pq \mid a^2-1$, that is $pq \mid (a-1)(a+1).$ Then there are four situations.
+
+	\begin{itemize}
+		\item $pq \mid a-1.$ Then since $1 \leq a \leq pq-1,$ this implies that $a=1.$
+		\item $pq \mid a+1.$ Similarly this implies $a=pq-1.$
+		\item $p \mid a-1, q \mid a+1.$ Then we can find integers $1 \leq i \leq p+1, 1 \leq j \leq q$ so that $a = jp+1 = iq-i.$ Since then $jp = iq-i-1 = i(q-1)-1,$ by division algorithm, $i$ is unique. So in this case, $a$ is also unique when $jp = i(q-1)-1$ exists.
+		\item $p \mid a+1, q \mid a-1.$ Similarly, we can find a unique $a$ value in this case with integers $k, l$ when $a = lq+1 = kp-k$ while $1 \leq a \leq pq-1.$
+	\end{itemize}
+
+	To conclude, there are at least 2 $a$ values, $a=1$ and $a=pq-1.$ There might be two at most other $a$ values exists.
+
+	%q3
+	\item (\S 2.4 \#7). Prove that if \(n\) is odd, then \(\phi(2n) = \phi(n)\), and if \(n\) is even,  \(\phi(2n)=2\phi(n)\).
+
+		\begin{proof} Let $n$ be an arbitrary integer.
+			\begin{itemize}
+				\item First case is that $n$ is odd. By definition, 2 and $n$ are relative prime. Then \(\phi(2n) = \phi(n) \cdot \phi(2) = \phi(n) \cdot 1 = \phi(n).\)
+				\item Second case is that $n$ is even, or $n = 2^i \cdot j$ for some integer $i,j$ that $i\geq 1$ and $j$ is odd. We easily have $j$ and 2's power are relative primes. Then \(\phi(2n)=\phi(2^{i+1}j) = \phi(2^{i+1}) \cdot \phi(j) = (2^{i+1} - 2^i)\cdot \phi(j) = 2^i \cdot \phi(j) = 2\cdot 2^{i-1} \cdot \phi(j).\) Since $2^{i-1} = 2^i - 2^{i-1} = \phi(2^i),$ we have \(2\cdot 2^{i-1} \cdot \phi(j) = 2 \cdot \phi(2^i) \phi (j) = 2 \cdot \phi(2^ij) = 2 \phi(n).\)
+			\end{itemize}
+			To conclude, if \(n\) is odd, then \(\phi(2n) = \phi(n)\), and if \(n\) is even,  \(\phi(2n)=2\phi(n)\).
+		\end{proof}
+
+	%q4
+	\item (\S 2.4 \#10). Determine all \(n\) so that \(\phi(3n)=3\phi(n)\).\\
+
+	When 3 divides $n$, \(\phi(3n)=3\phi(n)\).
+	\begin{proof}
+		For all integers, it is either divisible by 3 or not divisible by 3.
+		\begin{itemize}
+			\item If $3 \mid n,$ we can rewrite $n = 3^i \cdot m,$ where $m$ is an integer not divisible by 3. Then \(\phi(3n)=\phi(3\cdot 3^i \cdot m) = \phi(3^{i+1})\cdot \phi(m) = 3^i(3-1)\phi(m) = 3 \cdot 3^{i-1} \cdot (3-1) \cdot \phi(m) = 3\phi(3^i)\phi(m) = 3\phi(n).\)
+			\item If $3 \nmid n,$ then 3 and $n$ are relatively prime. \(\phi(3n)=\phi(3)\cdot \phi(n) = 2\phi(n) \neq 3\phi(n).\) Thus in this case, the statement does not hold.
+		\end{itemize}
+		To conclude, if and only if 3 divides $n$, \(\phi(3n)=3\phi(n)\).
+	\end{proof}
+
+	%q5
+	\item (\S 2.4 \#12). Determine all integers \(n\) so that \(\phi(n)=4\).
+
+	Suppose $n$ has the standard form $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}.$ Then \(\phi(n)=\phi(p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}) = \phi(p_1^{a_1})\phi(p_2^{a_2})\cdots \phi(p_k^{a_k}) = p_1^{a_1-1}(p_1-1)\cdot p_2^{a_2-1}(p_2-1)\cdots p_k^{a_k-1}(p_k-1)=4.\) For all primes larger than 5, $p_k - 1 > 4,$ then $\phi(n)>4$. Thus we only need to consider $p = 2, 3, 5.$ We then have 3 situations.
+
+	\begin{itemize}
+		\item $4=4=\phi(5) = \phi(2^3).$
+		\item $4=1\cdot 4 = \phi(2)\cdot \phi(5) = \phi(10).$
+		\item $4=2\cdot 2 = \phi(2^2) \cdot \phi(3) = \phi(12)$
+	\end{itemize}
+
+	When $n = 5,8, 10, 12, \phi(n)=4.$
+
+\end{enumerate}
+
+\end{document}

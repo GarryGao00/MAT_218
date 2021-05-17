@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{halloweenmath}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\begin{document}
+\begin{Large}
+\centerline{\bf MAT 218 - Elementary Number Theory (Spring 2)}\medskip
+\centerline{\bf Homework 11}\medskip
+\end{Large}
+{\bf Due:} Tuesday, May 11, at 11:59 PM CDT on Gradescope.
+
+{\bf Special directions:}  All problems must be done in \LaTeX.
+
+{\bf Name:} Yang (Garry) Gao
+
+\hrulefill
+
+\begin{enumerate}
+
+	%q1
+	\item (\S 2.5 \#6). Apply the M\"{o}bius inversion theorem to the expressions \(\sigma(n) = \sum_{d \mid n} d\) and \( \tau(n) = \sum_{d \mid n} 1\).
+
+	\begin{itemize}
+		\item \(\sigma(n) = \sum_{d \mid n} d.\) Since $f(n) = n$, $n = \sum_{d\mid n} \mu(d) \sigma(\frac{n}{d}).$
+		\item \( \tau(n) = \sum_{d \mid n} 1.\) Since $f(n) = 1$, $1 = \sum_{d\mid n} \mu(d) \tau(\frac{n}{d}).$
+	\end{itemize}
+
+	%q2
+	\item (\S 2.5 \#9). Let \(f\) and \(g\) be multiplicative functions, and define
+	\[ F(n) = \sum_{d \mid n} f(d)g\!\left(\frac{n}{d}\right). \]
+	Prove that \(F\) is a multiplicative function.
+
+	\begin{proof}
+		Find integers $m,n$ so that $(m,n) = 1.$ Then \( F(m) = \sum_{a \mid m} f(a)g\!\left(\frac{m}{a}\right), F(n) = \sum_{b \mid n} f(b)g\!\left(\frac{n}{b}\right)\) for integers $a, b.$ Then
+		\begin{align*}
+		F(m)\cdot F(n) &=  \sum_{b \mid n} f(b)g\!\left(\frac{n}{b}\right) \cdot \sum_{a \mid m} f(a)g\!\left(\frac{m}{a}\right) \\
+		&= \sum_{b \mid n} \sum_{a \mid m} f(b)g\!\left(\frac{n}{b}\right) f(a)g\!\left(\frac{m}{a}\right)
+		\end{align*}
+		Since \(f\) and \(g\) are multiplicative functions, $f(b)g\!\left(\frac{n}{b}\right) f(a)g\!\left(\frac{m}{a}\right) = f(ab)g(\frac{nm}{ab}).$ And the original equation becomes
+		\begin{align*}
+		F(m)\cdot F(n) &= \sum_{b \mid n} \sum_{a \mid m} f(ab)g(\frac{nm}{ab}) \\
+		&= \sum_{ab \mid mn} f(ab)g(\frac{nm}{ab}) \\
+		&= F(mn)
+		\end{align*}
+		Thus \(F\) is a multiplicative function.
+	\end{proof}
+
+	%q3
+	\item (\S 2.5 \#10). Prove that for any positive integer \(n\)
+	\[ \sum_{d \mid n} \sigma(d)\phi\!\left(\frac{n}{d}\right) = n\tau(n). \]
+
+	\begin{proof}
+		Since \(\sigma, \phi\) are both multiplicative, the function $F(n)= \sum_{d \mid n} \sigma(d)\phi\!\left(\frac{n}{d}\right)$ is also multiplicative. Hence we need only evaluate $F(p^k).$ And
+		\begin{align*}
+		F(p^k) &=  \sigma(p^0)\phi\!\left(p^k\right) + \sigma(p^1)\phi\!\left(p^{k-1}\right) + \ldots + \sigma(p^k)\phi\!\left(p^0\right)\\
+		&= 1 \cdot (p^k-p^{k-1}) + (1+p)\cdot (p^{k-1}-p^{k-2}) + \ldots + (1+p+\ldots + p^k)\cdot 1 \\
+		&= (p^k-p^{k-1}) + (p^k - p^{k-2}) + (p^k - p^{k-3}) + \ldots + (p^k-p^0) + (1+p+\ldots + p^k) \\
+		&= (k+1)p^k \\
+		&= \tau(n) \cdot n
+		\end{align*}
+		Thus we know that \(\sum_{d \mid n} \sigma(d)\phi\!\left(\frac{n}{d}\right) = n\tau(n).\)
+	\end{proof}
+
+	%q4
+	\item (Review Exercise) Let \(p\) be an odd prime. Show that if \(a \in Z_{2p}\) and if \(a^{2} \equiv 1 \mod 2p\), then \(a = 1\) or \(a = 2p-1\). (Hint: What do you know if \(m\) and \(n\) differ by \(2\)?)
+
+	\begin{proof}
+		From \(a \in Z_{2p}\), we know that $0 \leq a \leq 2p-1.$ Also as \(a^{2} \equiv 1 \mod 2p\), we know that $2p \mid a^2-1,$ or $2p \mid (a+1)(a-1).$
+			\begin{itemize}
+				\item Since any number divides 0, we can easily have $a=1$ as one of the solution.
+				\item We know that $a$ has to be odd, as if it is even, $(a-1)(a+1)$ would be an odd number, and which cannot be divided by a even number $2p.$ Thus we either have 2 and $p$ both divides $a-1$ or $a+1.$
+				\begin{itemize}
+					\item $2p \mid a-1.$ Then $a-1 \geq 2p, a \geq 2p+1.$ This contradicts with our assumption, thus this case is invalid.
+					\item $2p \mid a+1.$ Then $a+1 \geq 2p, a \geq 2p-1.$ Since we also have $a \leq 2p-1$ from the beginning, we know that $a = 2p-1.$
+				\end{itemize}
+			\end{itemize}
+			In conclusion, \(a = 1\) or \(a = 2p-1.\)
+	\end{proof}
+
+\end{enumerate}
+
+\end{document}
